@@ -1,8 +1,8 @@
 import "./responses.css";
 
 const Responses = (props) => {
-  const { data } = props;
-
+  const { data, colNumber } = props;
+  
   const COLORS = {
     "0_20": "#F25264",
     "20_40": "#F78782",
@@ -46,11 +46,11 @@ const Responses = (props) => {
     <div className="responses">
       <div className="title">{data.title}</div>
       <div className="heatmap">
-        {[...Array(5)].map((el, index) => {
+        {[...Array(parseInt(colNumber) || 3)].map((el, index) => {
           let randomVal = getRandomIntInclusive(1, 100);
           return (
             <span
-              key={index}
+              // key={index}
               className="tile"
               style={{
                 background: buildTileGradient(randomVal),
